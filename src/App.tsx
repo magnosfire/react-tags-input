@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import TagsInput from './TagsInput';
 
 const App: React.FC = () => {
-  function handleSelecetedTags(items) {
-    console.log("itens selected", items);
+  function handleSelecetedTags(items: string[]) {
+    return items;
   }
 
-  const [tags, setTags] = useState([
+  const [tags, setTags] = useState<string[]>([
     "contato@rarolabs.com.br",
     "nao-responda@rarolabs.com.br"
   ]);

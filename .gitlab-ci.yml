@@ -9,7 +9,7 @@ stages:
 build:
   stage: build
   before_script:
-    - export NODE_ENV=production
+    - export NODE_ENV=test
     - npm i
   script:
     - npm run build

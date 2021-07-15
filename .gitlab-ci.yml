@@ -1,0 +1,19 @@
+image:
+  name: node:alpine
+
+stages:
+  - test
+
+test:
+  stage: test
+  before_script:
+    - export NODE_ENV=test
+    - export CI=true
+    - npm i
+  script:
+    - npm run test:ci
+  artifacts:
+    untracked: false
+    expire_in: 5 days
+    paths:
+      - ./coverage

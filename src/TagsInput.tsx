@@ -10,7 +10,7 @@ export default function TagsInput(props) {
   }, [tags]);
 
   const handleDelete = (item) => () => {
-    console.log("must delete this chip", item);
+    return item;
   };
 
   return (

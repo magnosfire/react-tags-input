@@ -1,6 +1,7 @@
 import React from 'react'
 import TagsInput from '@/TagsInput'
 import { cleanup, render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 describe('TagsInput Component', () => {
   afterEach(jest.clearAllMocks)
@@ -13,21 +14,52 @@ describe('TagsInput Component', () => {
 
   it('deve renderizar as tags enviadas por atributos', () => {
     const emails = ['contato@rarolabs.com.br', 'nao-responda@rarolabs.com.br']
-
     const { debug } = render(<TagsInput tags={emails} />)
 
     debug()
   })
 
   it('deve renderizar tags quando preencher o input e pressionar enter', () => {
-    // teste não implementado.
+
+    const emails = [];
+    const container = render(<TagsInput inputProps={{ 'aria-label': 'tag' }} tags={emails} />)
+    const input = container.getByRole('textbox', {name: /tag/i})
+
+    userEvent.type(input, 'hire-me@email.com{enter}')
+
+    const { debug } = container;
+
+    debug()
+
   })
 
   it('deve renderizar tags quando preencher o input e pressionar tab', () => {
-    // teste não implementado.
+  
+    const emails = [];
+    const container = render(<TagsInput inputProps={{ 'aria-label': 'tag' }} tags={emails} />)
+    const input = container.getByRole('textbox', {name: /tag/i});
+
+    userEvent.type(input, 'hire-me@email.com{enter}')
+
+    const { debug } = container;
+
+    debug()
+
+
   })
 
   it('deve deletar a útima tag criada ao pressionar o botão de backspace', async () => {
-    // teste não implementado.
+
+    const emails = ['contato@rarolabs.com.br', 'nao-responda@rarolabs.com.br']
+    const container = render(<TagsInput inputProps={{ 'aria-label': 'tag' }} tags={emails} />)
+    const input = container.getByRole('textbox', {name: /tag/i});
+
+    userEvent.type(input, '{backspace}')
+
+    const { debug } = container;
+
+    debug()
+
+    expect(emails == ['contato@rarolabs.com.br'])
   })
 })

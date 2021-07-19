@@ -3,6 +3,7 @@ import TagsInput from './TagsInput';
 
 const App: React.FC = () => {
   function handleSelecetedTags(items: string[]) {
+    console.log(items)
     return items;
   }
 
@@ -19,9 +20,10 @@ const App: React.FC = () => {
         variant="outlined"
         id="tags"
         name="tags"
-        placeholder="add Tags"
+        placeholder="Adicionar Tag"
         label="tags"
         tags={tags}
+        data-testid={'tagInput'}
       />
     </div>
   );
